@@ -1,0 +1,52 @@
+Git : SaiPrasanth12345, Pra@970..., saiprasanth6102@gmail.com
+
+
+touch filename  --> create a new file at the local folder
+
+git status
+
+git add *  --> stage the files
+
+git commit -m "commit message"
+
+git log --> to get info of all commits
+
+	--> commit id will be displayed for each commit -> to track details of commit
+
+git push -u origin "branchname" -> to push the files to the branch
+
+Method 2:
+
+create a new folder using mk dir
+
+create new file using touch command
+
+git init --> creates a new repository with that branch
+
+git remote add origin 
+
+git remote -v  --> shows which repository local is pointing to
+
+git checkout -b "name of new branch"   --> to checkout & create new branch
+
+to merge 2 branches: ( to merge develop to master)
+
+git checkout master
+
+git merge develop
+
+git push
+
+git stash  --> Temporarily storing files in local / staging area
+
+git stash pop  --> to retrive the stashed files
+
+To add Tags to the File:
+
+git tag -a <tag-name> -m "tagging message" (creates an annotated tag)
+
+git push origin tagname
+
+git tag
+
+git show tagname
