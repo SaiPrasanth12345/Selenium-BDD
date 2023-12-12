@@ -1,5 +1,23 @@
 Git : SaiPrasanth12345, Pra@970..., saiprasanth6102@gmail.com
 
+-------------------------------------------------------
+1. Create a folder
+2. Add files in the folder
+3. Do git bash to the folder
+4. git init
+5. git status
+6. git add . 
+7. git status
+8. git commit -m " message"
+9. created a git respository (skip if already present)
+10. git remote add origin "https://github.com/SaiPrasanth12345/testProject"
+11. git push -u origin master
+
+12. for adding global username/ email (so that we dont get that popup everytime to add credentials)
+	git config --global user.email "saiprasanth6102@gmail.com"
+	git config --global user.name "SaiPrasanth12345"
+-------------------------------------------------------
+
 
 touch filename  --> create a new file at the local folder
 
