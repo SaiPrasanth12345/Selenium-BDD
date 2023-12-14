@@ -122,7 +122,7 @@ public class CommonMethods {
 		driver.findElement(By.xpath(addCart)).click();
 	}
 
-	public int validateCartCount() {
+	public String validateCartCount() {
 		String cartCount = "//span[@id='nav-cart-count']";
 		
 		// validate cart count
