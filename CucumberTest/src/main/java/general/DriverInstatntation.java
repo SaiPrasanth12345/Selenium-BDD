@@ -23,7 +23,7 @@ public class DriverInstatntation {
 		/* No need to use any System property now , Selenium automatically fetches the CFT browser & chrome driver 
 		 For lower versions we need to update the System.setProperty */
 		
-		System.setProperty("webdriver.chrome.driver", "C:/Users/prasanth.sai.menta/eclipse-workspace/CucumberTest/chromedriver_win32/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "chromedriver_win32/chromedriver.exe");
 		
 		ChromeOptions options = new ChromeOptions();
 		/* to add the chrome browser for testing path using chrome options */
