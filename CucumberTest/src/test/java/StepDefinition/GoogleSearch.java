@@ -77,11 +77,17 @@ public class GoogleSearch {
 	}
 	@When("Add the Product")
 	public void add_the_product() {
-	    comm.addProduct();
+	    	comm.addProduct();
 	}
 
 	@Then("validate for amazon Product")
 	public void validate_for_amazon_product() {
-		comm.amazonCheck();
+		// validate 2 items are present in the cart
+		int cartcount = comm.validateCartCount();
+		Assert.assertEquals(cartcount, "2");
+
+		// validate for item present in cart
+		boolean itemDislpayed = comm.validateCart();
+		Assert.assertTrue(itemDislpayed);
 	}
 }
