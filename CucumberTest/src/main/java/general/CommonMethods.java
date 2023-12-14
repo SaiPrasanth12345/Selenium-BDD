@@ -124,21 +124,32 @@ public class CommonMethods {
 		driver.findElement(By.xpath(addCart)).click();
 	}
 
-	public void amazonCheck() {
+	public int validateCartCount() {
 		String cartCount = "//span[@id='nav-cart-count']";
-		String navCart = "//a[@id='nav-cart']";
-		String shoppingCart = "//h1[' Shopping Cart']";
-		String itemInCart = "//div[@class='sc-item-content-group']//a/span/span[contains(.,'B. toys- B. softies- 12\" Plush Bunny')]";
-
+		
 		// validate cart count
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 //		System.out.println("Count:" +driver.findElement(By.xpath(cartCount)).getText());
-		Assert.assertEquals(driver.findElement(By.xpath(cartCount)).getText(), "2");
+		return driver.findElement(By.xpath(cartCount)).getText();
+		// Assert.assertEquals(driver.findElement(By.xpath(cartCount)).getText(), "2");
 
 		driver.findElement(By.xpath(navCart)).click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(shoppingCart))));
 		Assert.assertTrue(driver.findElement(By.xpath(itemInCart)).isDisplayed());
+	}
+
+	public boolean validateCart() {
+		
+		String navCart = "//a[@id='nav-cart']";
+		String shoppingCart = "//h1[' Shopping Cart']";
+		String itemInCart = "//div[@class='sc-item-content-group']//a/span/span[contains(.,'B. toys- B. softies- 12\" Plush Bunny')]";
+
+		driver.findElement(By.xpath(navCart)).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(shoppingCart))));
+		// Assert.assertTrue(driver.findElement(By.xpath(itemInCart)).isDisplayed());
+		return (driver.findElement(By.xpath(itemInCart)).isDisplayed());
 	}
 
 	
