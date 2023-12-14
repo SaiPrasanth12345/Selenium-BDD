@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(features="src/test/resources/features", 
 				 glue = {"StepDefinition", "src/main/java/general"},
-				 tags = "@googleSearchDatatable,@GoogleSearch",
+				 tags = "@googleSearchDatatable, @GoogleSearch",
 				 dryRun = false,
 				 plugin = {"json:target/cucumber.json", "html:target/html-reports/report.html"})
 
