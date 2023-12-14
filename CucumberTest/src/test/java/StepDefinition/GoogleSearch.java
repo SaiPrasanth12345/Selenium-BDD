@@ -83,7 +83,7 @@ public class GoogleSearch {
 	@Then("validate for amazon Product")
 	public void validate_for_amazon_product() {
 		// validate 2 items are present in the cart
-		int cartcount = comm.validateCartCount();
+		String cartcount = comm.validateCartCount();
 		Assert.assertEquals(cartcount, "2");
 
 		// validate for item present in cart
