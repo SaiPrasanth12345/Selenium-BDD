@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-// import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
@@ -22,10 +21,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.openqa.selenium.JavascriptExecutor;
-
 import junit.framework.Assert;
-
-
 public class CommonMethods {
 
 	public static WebDriver driver;
@@ -126,23 +122,25 @@ public class CommonMethods {
 		driver.findElement(By.xpath(addCart)).click();
 	}
 
-	public void amazonCheck() {
+	public String validateCartCount() {
 		String cartCount = "//span[@id='nav-cart-count']";
+		
+		// validate cart count
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+//		System.out.println("Count:" +driver.findElement(By.xpath(cartCount)).getText());
+		// Assert.assertEquals(driver.findElement(By.xpath(cartCount)).getText(), "2");
+		return driver.findElement(By.xpath(cartCount)).getText();
+	}
+
+	public boolean validateCart() {
 		String navCart = "//a[@id='nav-cart']";
 		String shoppingCart = "//h1[' Shopping Cart']";
 		String itemInCart = "//div[@class='sc-item-content-group']//a/span/span[contains(.,'B. toys- B. softies- 12\" Plush Bunny')]";
 
-		// validate cart count
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-//		System.out.println("Count:" +driver.findElement(By.xpath(cartCount)).getText());
-		Assert.assertEquals(driver.findElement(By.xpath(cartCount)).getText(), "2");
-
 		driver.findElement(By.xpath(navCart)).click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(shoppingCart))));
-		Assert.assertTrue(driver.findElement(By.xpath(itemInCart)).isDisplayed());
+		// Assert.assertTrue(driver.findElement(By.xpath(itemInCart)).isDisplayed());
+		return (driver.findElement(By.xpath(itemInCart)).isDisplayed());
 	}
-
-	
-
 }
