@@ -20,10 +20,18 @@ public class GoogleSearch {
 	public void i_to_launch_the_google_page() {
 		System.out.println("12345");
 		comm.googleLaunch();
-		
+
 		HooksClass hkc = new HooksClass();
 		hkc.logMessage("Google Launched");
 		hkc.attachScreenshot();
+	}
+	
+	@Then("I verify for the result text")
+	public void i_verify_for_the_result_text(DataTable dataTable) {
+		List<String> searchKeys = dataTable.asList();
+		String text = searchKeys.get(1);
+		System.out.println("Search String: " + text);
+		selenium_java_search_is_displayed();
 	}
 
 	@When("I search for the text {string} in the search box")
@@ -44,6 +52,7 @@ public class GoogleSearch {
 		comm.searchGoogleTextusingJavaScript(comm.getDataFromExcel().get(1));
 	}
 
+	@When("I search for the text in the search box")
 	@When("I search for the text in the search box through datatable")
 	public void i_search_for_the_text_in_the_search_box_through_datatable(DataTable dataTable) {
 		List<List<String>> searchKeys = dataTable.asLists();
@@ -70,14 +79,20 @@ public class GoogleSearch {
 		System.out.println("Pojo Class Text: " + text);
 		comm.searchGoogleText(text);
 	}
-	
+
+	@Then("Selenium java search is displayed")
+	public void selenium_java_search_is_displayed() {
+		Assert.assertTrue("Selenium Java is Displayed", comm.seleniumJavadisplayed());
+	}
+
 	@Given("Navigate to amazon website")
 	public void navigate_to_amazon_website() {
 		comm.amazonLaunch();
 	}
+
 	@When("Add the Product")
 	public void add_the_product() {
-	    	comm.addProduct();
+		comm.addProduct();
 	}
 
 	@Then("validate for amazon Product")

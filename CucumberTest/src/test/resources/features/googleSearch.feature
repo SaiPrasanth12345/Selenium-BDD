@@ -13,13 +13,17 @@ Feature: Google Search
     When I search for the text in the search box through excel
     Then Search is displayed
 
-  @test4
+  @test4 @123
   Scenario Outline: Google Search with Examples
     Given I to launch the google page
-    When I search for the text <text> in the search box
-    Then i verify for the result text <result>
+    When I search for the text in the search box
+      | text   |
+      | <text> |
+    Then I verify for the result text
+      | result   |
+      | <result> |
 
     Examples: 
-      | text     | result   |
-      | Selenium | Selenium |
-      | Java     | Java     |
+      | text               | result   |
+      | Selenium  Java     | Selenium |
+      | Webdriver Selenium | Java     |

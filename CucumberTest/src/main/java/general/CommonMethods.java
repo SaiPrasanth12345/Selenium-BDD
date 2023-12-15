@@ -16,20 +16,20 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.openqa.selenium.JavascriptExecutor;
-import junit.framework.Assert;
+
 public class CommonMethods {
 
 	public static WebDriver driver;
 	String searchText = "//textarea[@title='Search']";
 	String searchresult = "//h3[.='Selenium']";
 	String searchbtn = "//div[not(contains(style,'display:none'))]/div/center/input[@value='Google Search']";
-	// String seleniumJavaSearch = "//div[@role='heading' and text()='Selenium
-	// Java']";
+	// String seleniumJavaSearch = "//div[@role='heading' and text()='Selenium Java']";
 	String seleniumJavaSearch = "//h3[.='Selenium WebDriver']";
 
 	public void getDriver() {
@@ -89,7 +89,7 @@ public class CommonMethods {
 		}
 		return dataLst;
 	}
-
+	
 	public boolean seleniumJavadisplayed() {
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		return driver.findElement(By.xpath(seleniumJavaSearch)).isDisplayed();
@@ -104,13 +104,13 @@ public class CommonMethods {
 		driver.navigate().to("https://www.amazon.com/");
 		driver.manage().window().maximize();
 	}
-	
+
 	public void addProduct() {
 		String searchBox = "//input[contains(@id,'searchtextbox')]";
 		String prod1 = "//a/span[contains(.,'B. softies- 12\" Plush Bunny- Huggable Stuffed Animal Rabbit Toy- Soft & Cuddly Plush Bunny – Washable – Newborns, Toddlers, Kids- Happy Hues- Sprinkle Bunny - 0 Months +')]";
 		String qty = "//select[@name='quantity']";
 		String addCart = "//input[@id='add-to-cart-button']";
-		
+
 		driver.findElement(By.xpath(searchBox))
 				.sendKeys("B. Toys by Battat – Happy Hues – Sprinkle Bunny – Huggable Stuffed Animal Rabbit Toy");
 		driver.findElement(By.xpath(searchBox)).sendKeys(Keys.ENTER);
@@ -124,7 +124,7 @@ public class CommonMethods {
 
 	public String validateCartCount() {
 		String cartCount = "//span[@id='nav-cart-count']";
-		
+
 		// validate cart count
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 //		System.out.println("Count:" +driver.findElement(By.xpath(cartCount)).getText());
